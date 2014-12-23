@@ -1,0 +1,15 @@
+# Consul-Template Agent (Upstart unit)
+description "Consul-Template Agent"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [06]
+
+env CONSUL_TEMPLATE=<%= @_bin_dir %>/consul-template
+env CONFIG=<%= @_conf_dir %>/consul_template.hcl
+
+script
+    exec sudo -u <%= @_user %> -g <%= @_group %> $CONSUL_TEMPLATE -config $CONFIG
+end script
+
+respawn
+respawn limit 10 10
+kill timeout 10

@@ -1,0 +1,14 @@
+{
+  "name": "jfryman-consul_template",
+  "version": "0.0.1",
+  "author": "jfryman",
+  "summary": "Manage consul_template",
+  "license": "Apache 2.0",
+  "source": "https://github.com/jfryman/puppet-consul_template",
+  "project_page": "https://github.com/jfryman/puppet-consul_template",
+  "issues_url": "https://github.com/jfryman/puppet-consul_template/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+

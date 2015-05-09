@@ -34,7 +34,7 @@ class consul_template::install {
         target => "/lib/init/upstart-job",
         owner  => root,
         group  => root,
-        mode   => 0755,
+        mode   => '0755',
       }
     }
     default : {

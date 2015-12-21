@@ -1,0 +1,16 @@
+[Unit]
+Description=Consul Template
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=<%= @_user %>
+Group=<%= @_group %>
+ExecStart=<%= @_bin_dir %>/consul-template -config <%= @_conf_dir %>/consul_template.hcl
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target

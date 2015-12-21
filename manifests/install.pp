@@ -34,8 +34,17 @@ class consul_template::install {
         target => "/lib/init/upstart-job",
         owner  => root,
         group  => root,
-        mode   => 0755,
+        mode   => '0755',
       }
+    }
+    'systemd': {
+        file { '/etc/systemd/system/consul_template.service':
+          ensure  => file,
+          mode    => '0444',
+          owner   => 'root',
+          group   => 'root',
+          content => template('consul_template/consul_template.systemd.erb'),
+        }
     }
     default : {
       fail("I don't know how to create an init script for style $_init_style")
